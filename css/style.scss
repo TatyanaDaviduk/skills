@@ -1,18 +1,422 @@
-@font-face {
-    font-family: "Source Sans Pro Bold";
-    font-style: normal;
-    font-weight: 400;
-    src: url("../fonts/SourceSansPro-Bold.ttf");
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,italic,700');
+
+:root{
+    --bg-color:#23233B;
+    --accent-color:#57D9A6;
+    --tytle-color:#1C1C33;
+    --text-color:#4E4E65;
+    --white-textColor:#F6F6F8;
+    --hover-color:#258B63;
 }
-@font-face {
-    font-family: "Source Sans Pro Italic";
-    font-style: normal;
-    font-weight: 400;
-    src: url("../fonts/SourceSansPro-Italic.ttf");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-@font-face {
-    font-family: "Source Sans Pro Regular";
-    font-style: normal;
-    font-weight: 400;
-    src: url("../fonts/SourceSansPro-Regular.ttf");
+ body{
+    &._lock{
+        overflow: hidden;/*чтобы при открытии меню мы не смогли скролить сайт*/
+    }
+ }
+
+ul,li{
+    list-style: none;
 }
+a{
+    text-decoration: none;
+}
+
+img{
+   width: 100%;
+   //height: auto;
+}
+
+button{
+    cursor: pointer;
+    border: none;
+}
+
+.btn{
+    background-color: var(--accent-color);
+    border-radius: 4px;
+    padding: 16px 24px;
+    font-weight: 400;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: var(---tytle-color);
+    transition: color  0.2s;
+    &:hover{
+        background-color: var(--hover-color);
+    }
+}
+
+[class*="__container"]{
+    max-width: 1402px; // 1372px + 30px padding 
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/*-------------------------------Header-------------------------------*/
+
+.header {
+    background-color: var(--tytle-color);
+    position: fixed;
+    top: 37px;
+    left: 0;
+    width: 100%;
+    transition: top .1s linear;
+    z-index: 999;
+    &.-active{
+        top:0px;
+    }
+    // .header__container
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        padding: 30px 15px; 
+    }
+    // .header__logo
+    &__logo {
+    }
+    // .header__navigation
+    &__navigation {
+       display: flex;
+       align-items: center;
+    }
+    // .header__menu
+    &__menu {
+    }
+}
+
+.menu {
+    // .menu__body
+    &__body {
+        display: flex;
+        gap:32px;
+        @media screen and (max-width:800px){
+            position: absolute;
+            top: 0;
+            right: -100%;
+            //right: 0;
+            transition: left .2s;
+            height: 100vh;
+            width: 60%;
+            background-color: var(--tytle-color);
+            opacity: 0.9;
+            flex-direction: column;
+            padding-top: 120px;
+            padding-left: 40px;
+            overflow: auto;
+            &.-active{
+                right: 0;
+            }
+        }
+        @media screen and (max-width:400px){
+            width: 100%;
+            opacity: 1;
+        }
+    }
+    // .menu__item
+    &__item {
+        align-self: center;
+    }
+    // .menu__link
+    &__link {
+        font-weight: 400;
+        font-size: 18px;
+        color: var(--white-textColor);
+        transition: color font-size 0.2s;
+        &:hover{
+            color: var(--hover-color);
+            font-size: 22px;
+        }
+        @media screen and (max-width:800px){
+            font-size: 25px;
+            &:hover{
+                color: var(--hover-color);
+                font-size: 28px;
+            }
+        }
+    }
+    &__buy{
+        margin-left: clamp(0rem, -20.154rem + 44.11vw, 18.5rem);
+        margin-right: 50px;
+        position: relative;
+        &:hover{
+            svg{
+                transform: scale(1.2);
+                path{
+                    stroke: var(--hover-color);
+                }
+                
+            }
+        }
+    }
+}
+
+.menu-burger {
+    display: none;
+    @media screen and (max-width:800px){
+        display: block;
+        width: 40px;
+        height: 20px;
+        position: relative;
+        align-self: center;
+        cursor: pointer;
+        span{
+            transition: all 0.3s ease 0s;
+            position: absolute;
+            top: calc(50% - 1px);
+            left: 0;
+            height: 2px;
+            width: 100%;
+            background-color: var(--white-textColor);
+            &:first-child{
+                top:0;
+            }
+            &:last-child{
+                top:auto;
+                bottom: 0;
+            }
+        }
+        &.-active{
+            span{
+                transform: scale(0);
+                &:first-child{
+                    transform: rotate(-45deg);
+                    top: calc(50% - 1px);
+                }
+                &:last-child{
+                    transform: rotate(45deg);
+                    bottom: calc(50% - 1px);
+                }
+            }
+        }
+    }
+}
+
+.buy-count{
+    position: absolute;
+    background-color: #FC5468;
+    height: 18px;
+    width: 18px;
+    border-radius: 9px;
+    right: -7px;
+    top: -22px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*------------------------------/Header-------------------------------*/
+
+/*------------------------------Main-------------------------------*/
+.offer {
+    background-color: var(--accent-color);
+    // .offer__content
+    &__container {
+
+    }
+    &__text{
+        height: 37px;
+        font-weight: 400;
+        font-size: 18px;
+        text-align: center;
+        color: var(--tytle-color);
+        padding: 8px 0px;
+        @media screen and (max-width:550px) {
+            font-size: clamp(0.75rem, 0.228rem + 2.61vw, 1.125rem);
+        }
+    }
+}
+.main {
+    background-color: var(--bg-color);
+    padding-bottom: 137px;
+    // .main__container
+    &__container {
+        display: flex;
+        justify-content: space-between;
+    }
+    // .main__info
+    &__info {
+       margin-top: clamp(7.5rem, 4.376rem + 15.62vw, 18.063rem);
+        @media screen and (max-width: 740px) {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+    }
+    // .main__course
+    &__course {
+        font-weight: 400;
+        font-size: 16px;
+        color: var(--white-textColor);
+        position: relative;
+        transition: color font-size 0.2s;
+        &::after{
+            content: "";
+            height: 2px;
+            width: 100%;
+            background-color: var(--accent-color);
+            position: absolute;
+            left: 0px;
+            top: 28px;
+        }
+        &:hover{           
+            color: var(--hover-color);
+            font-size: 22px;
+            &::after{
+                top: 35px;
+                background-color: var(--hover-color);
+            }
+        }
+    }
+    // .main__tytle
+    &__tytle {
+        margin-bottom: 22px;
+        //margin-top: 68px;
+        margin-top: clamp(1.875rem, 1.173rem + 3.51vw, 4.25rem);
+        font-style: normal;
+        font-weight: 700;
+        //font-size: 55px;
+        font-size: clamp(2.75rem, 2.547rem + 1.02vw, 3.438rem);
+        line-height: 60px;
+        color: var(--white-textColor);
+        max-width: 509px;
+    }
+    // .main__text
+    &__text {
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 33px;
+        color: var(--white-textColor);
+        margin-bottom: 22px;
+        max-width: 548px;
+    }
+    // .main__sign
+    &__sign {
+        font-weight: 400;
+        font-size: 17px;
+        color: var(--text-color);
+        margin-bottom: 48px;
+    }
+    // .main__img
+    &__img {
+        max-width: clamp(18.75rem, 1.59rem + 45.76vw, 41.688rem);
+        max-height: auto;
+        margin-top: 249px;
+       // border: solid 1px green;
+        @media screen and (max-width: 740px) {
+            display: none;
+        }
+    }
+}
+
+/*------------------------------/Main-------------------------------*/
+
+/*------------------------------Courses-------------------------------*/
+.courses {
+    background-color: var(--bg-color);
+    // .courses_desc
+    &_desc {
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 33px;
+        color: var(--white-textColor);
+        text-align: center;
+        margin-bottom: 46px;
+    }
+    // .courses_view-all
+    &_view-all {
+        margin-bottom: 80px;
+    }
+    // .courses__container
+    &__container {
+    }
+    // .courses__tytle
+    &__tytle {
+        color: var(--white-textColor);
+        font-weight: 700;
+        font-size: 44px;
+        text-align: center;
+        margin-bottom: 86px;
+        position: relative;
+        transition: color font-size 0.2s;
+        &::after{
+            content: "";
+            height: 2px;
+            width: 150px;
+            background-color: var(--accent-color);
+            position: absolute;
+            left: calc(50% - 75px);
+            top: 70px;
+        }
+    }
+    // .courses__cards
+    &__cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-content: center;
+        gap: 20px;
+        margin: 0 auto;
+        
+        /*display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 144px;
+        gap: 10px;*/
+    }
+    // .courses__card
+    &__card {
+        width: 395px;
+        height: 422px;
+        background-color: #fff;
+    }
+}
+
+.card {
+    // .card__img
+    &__img {
+    
+    }
+    // .card__tytle
+    &__tytle {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+        color: var(--tytle-color);
+        margin: 22px 89px 8px 24px;
+    }
+    // .card__author
+    &__author {
+        font-weight: 400;
+        font-size: 17px;
+        margin: 0px 270px 15px 24px;
+        color: var(--text-color);
+    }
+    // .card__price
+    &__price {
+        font-weight: 400;
+        font-size: 22px;
+        color: var(--tytle-color);
+        margin-bottom: 16px;
+        margin-left: 24px;
+    }
+    // .card__learn-more
+    &__learn-more {
+        margin-left: 24px;
+        color: var(--accent-color);
+        font-weight: 400;
+        font-size: 16px;
+        text-transform: uppercase;
+        background-color: #fff;
+        &:hover{
+            color: var(--hover-color);
+        }
+    }
+}
+/*-----------------------------/Courses-------------------------------*/
