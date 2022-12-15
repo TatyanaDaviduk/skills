@@ -15,6 +15,9 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #F5F5F5;
+}
 body._lock {
   overflow: hidden; /*чтобы при открытии меню мы не смогли скролить сайт*/
 }
@@ -48,6 +51,70 @@ button {
 }
 .btn:hover {
   background-color: var(--hover-color);
+}
+
+.text {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 33px;
+}
+@media screen and (max-width: 400px) {
+  .text {
+    font-size: 20px;
+  }
+}
+
+.tytle-Left {
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 53px;
+  position: relative;
+}
+.tytle-Left::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 2px;
+  background-color: var(--accent-color);
+  left: 0;
+  bottom: -15px;
+}
+@media screen and (max-width: 400px) {
+  .tytle-Left {
+    font-size: 38px;
+  }
+}
+
+.tytle-Center {
+  font-weight: 700;
+  font-size: 44px;
+  position: relative;
+}
+.tytle-Center::after {
+  content: "";
+  height: 2px;
+  width: 150px;
+  background-color: var(--accent-color);
+  position: absolute;
+  left: calc(50% - 75px);
+  bottom: -17px;
+}
+@media screen and (max-width: 400px) {
+  .tytle-Center {
+    font-size: 38px;
+  }
+}
+
+.btn-learnMore {
+  margin-left: 24px;
+  color: var(--accent-color);
+  font-weight: 400;
+  font-size: 16px;
+  text-transform: uppercase;
+  background-color: #fff;
+}
+.btn-learnMore:hover {
+  color: var(--hover-color);
 }
 
 [class*=__container] {
@@ -270,9 +337,6 @@ button {
   max-width: 509px;
 }
 .main__text {
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 33px;
   color: var(--white-textColor);
   margin-bottom: 22px;
   max-width: 548px;
@@ -299,65 +363,83 @@ button {
 .courses {
   background-color: var(--bg-color);
 }
-.courses_desc {
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 33px;
-  color: var(--white-textColor);
+.courses_all {
+  max-width: 686px;
+  margin: 0 auto;
   text-align: center;
+}
+.courses_desc {
+  color: var(--white-textColor);
   margin-bottom: 46px;
+  padding: 0 21px;
 }
 .courses_view-all {
   margin-bottom: 80px;
 }
 .courses__tytle {
   color: var(--white-textColor);
-  font-weight: 700;
-  font-size: 44px;
-  text-align: center;
   margin-bottom: 86px;
-  position: relative;
-  transition: color font-size 0.2s;
-}
-.courses__tytle::after {
-  content: "";
-  height: 2px;
-  width: 150px;
-  background-color: var(--accent-color);
-  position: absolute;
-  left: calc(50% - 75px);
-  top: 70px;
 }
 .courses__cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  justify-content: center;
+  justify-items: center;
   gap: 20px;
   margin: 0 auto;
-  /*display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
   padding-bottom: 144px;
-  gap: 10px;*/
 }
-.courses__card {
+@media screen and (max-width: 1308px) {
+  .courses__cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 830px;
+  }
+}
+@media screen and (max-width: 878px) {
+  .courses__cards {
+    grid-template-columns: 1fr;
+  }
+}
+.card {
   width: 395px;
   height: 422px;
   background-color: #fff;
 }
-
+@media screen and (max-width: 500px) {
+  .card {
+    width: 300px;
+    height: 400px;
+  }
+}
+@media screen and (max-width: 370px) {
+  .card {
+    width: 250px;
+    height: 350px;
+  }
+}
+@media screen and (max-width: 1308px) {
+  .card-last {
+    grid-column: span 2;
+  }
+}
+@media screen and (max-width: 878px) {
+  .card-last {
+    grid-column: span 1;
+  }
+}
 .card__tytle {
   font-weight: 400;
   font-size: 24px;
   line-height: 29px;
   color: var(--tytle-color);
-  margin: 22px 89px 8px 24px;
+  max-width: 280px;
+  margin: 22px 0px 8px 24px;
 }
 .card__author {
   font-weight: 400;
   font-size: 17px;
-  margin: 0px 270px 15px 24px;
+  margin-left: 24px;
+  margin-bottom: 15px;
   color: var(--text-color);
 }
 .card__price {
@@ -367,16 +449,211 @@ button {
   margin-bottom: 16px;
   margin-left: 24px;
 }
-.card__learn-more {
-  margin-left: 24px;
-  color: var(--accent-color);
-  font-weight: 400;
-  font-size: 16px;
-  text-transform: uppercase;
+/*-----------------------------/Courses-------------------------------*/
+/*------------------------------recommend -------------------------------*/
+.recommend {
+  background-color: var(--tytle-color);
+  margin-bottom: 144px;
+}
+.recommend__wrapper {
+  max-width: 1440px;
+  max-height: 664px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.recommend__img {
+  max-width: 720px;
+  align-self: flex-start;
+}
+@media screen and (max-width: 1440px) {
+  .recommend__img {
+    align-self: center;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .recommend__img {
+    display: none;
+  }
+}
+.recommend__info {
+  max-width: 624px;
+  margin: clamp(1.25rem, -24.818rem + 37.58vw, 9rem) 43px;
+}
+@media screen and (max-width: 1100px) {
+  .recommend__info {
+    margin: 20px auto;
+    text-align: center;
+    padding: 0 15px;
+  }
+}
+.recommend__tytle {
+  color: var(--white-textColor);
+  margin-bottom: 50px;
+}
+@media screen and (max-width: 1100px) {
+  .recommend__tytle::after {
+    left: calc(50% - 75px);
+  }
+}
+.recommend__desc {
+  color: var(--white-textColor);
+  margin-bottom: 46px;
+}
+/*------------------------------/recommend -------------------------------*/
+.workshops {
+  margin-bottom: 145px;
+}
+.workshops__about {
+  margin: 0 auto;
+  max-width: 686px;
+  text-align: center;
+}
+.workshops__tytle {
+  margin-bottom: 50px;
+}
+.workshops__desc {
+  margin-bottom: 40px;
+  color: var(--text-color);
+}
+.workshops__view-all {
+  margin-bottom: 80px;
+}
+.workshops__cards {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 1342px) {
+  .workshops__cards {
+    grid-template-columns: 1fr 1fr;
+    max-width: 834px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .workshops__cards {
+    grid-template-columns: 1fr;
+  }
+}
+.workshop {
+  width: 393px;
+  padding: 22px 35px 24px 24px;
   background-color: #fff;
 }
-.card__learn-more:hover {
-  color: var(--hover-color);
+@media screen and (max-width: 500px) {
+  .workshop {
+    width: 300px;
+    height: 400px;
+  }
+}
+@media screen and (max-width: 370px) {
+  .workshop {
+    width: 250px;
+    height: 300px;
+  }
+}
+@media screen and (max-width: 1342px) {
+  .workshop-last {
+    grid-column: span 2;
+  }
+}
+@media screen and (max-width: 900px) {
+  .workshop-last {
+    grid-column: span 1;
+  }
+}
+.workshop__tytle {
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--tytle-color);
+}
+.workshop__desc {
+  margin-top: 11px;
+  margin-bottom: 28px;
+  color: var(--text-color);
+}
+.workshop__learn-more {
+  margin-left: 0;
 }
 
-/*-----------------------------/Courses-------------------------------*//*# sourceMappingURL=style.css.map */
+/*------------------------------forTeachers  -------------------------------*/
+.forTeachers {
+  background-color: var(--tytle-color);
+  margin-bottom: 144px;
+}
+.forTeachers_tytle {
+  color: var(--white-textColor);
+  margin-bottom: 50px;
+}
+@media screen and (max-width: 740px) {
+  .forTeachers_tytle::after {
+    left: calc(50% - 75px);
+  }
+}
+.forTeachers__container {
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+}
+.forTeachers__img {
+  margin-top: 109px;
+  margin-bottom: 88px;
+}
+@media screen and (max-width: 740px) {
+  .forTeachers__img {
+    display: none;
+  }
+}
+@media screen and (max-width: 1060px) {
+  .forTeachers__img {
+    align-self: center;
+  }
+}
+.forTeachers__info {
+  max-width: 614px;
+  margin-top: 263px;
+}
+@media screen and (max-width: 1255px) {
+  .forTeachers__info {
+    margin-top: clamp(3.125rem, -16.004rem + 41.36vw, 16.438rem);
+  }
+}
+@media screen and (max-width: 740px) {
+  .forTeachers__info {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+}
+.forTeachers__text {
+  color: var(--white-textColor);
+  margin-bottom: 46px;
+  padding-right: 66px;
+}
+@media screen and (max-width: 740px) {
+  .forTeachers__text {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 740px) {
+  .forTeachers__about-skillz {
+    margin-bottom: 40px;
+  }
+}
+
+/*------------------------------/forTeachers  -------------------------------*/
+.articles_desc {
+  color: var(--text-color);
+}
+.articles__tytle {
+  color: var(--tytle-color);
+}
+.card__date {
+  margin-top: 23px;
+  margin-left: 24px;
+  font-weight: 400;
+  font-size: 17px;
+  color: var(--text-color);
+}/*# sourceMappingURL=style.css.map */

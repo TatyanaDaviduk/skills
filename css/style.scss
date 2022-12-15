@@ -15,6 +15,7 @@
     box-sizing: border-box;
 }
  body{
+    background-color: #F5F5F5;
     &._lock{
         overflow: hidden;/*чтобы при открытии меню мы не смогли скролить сайт*/
     }
@@ -48,6 +49,63 @@ button{
     transition: color  0.2s;
     &:hover{
         background-color: var(--hover-color);
+    }
+}
+
+.text{
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 33px;
+    @media screen and (max-width:400px){
+        font-size: 20px;
+    }
+}
+
+.tytle-Left{
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 53px;
+    position: relative;
+    &::after{
+        content: "";
+        position: absolute;
+        width: 150px;
+        height: 2px;
+        background-color: var(--accent-color);
+        left: 0;
+        bottom: -15px; 
+    }
+    @media screen and (max-width:400px){
+        font-size: 38px;
+    }
+}
+.tytle-Center{
+    font-weight: 700;
+    font-size: 44px;
+    position: relative;
+    &::after{
+        content: "";
+        height: 2px;
+        width: 150px;
+        background-color: var(--accent-color);
+        position: absolute;
+        left: calc(50% - 75px);
+        bottom: -17px;
+    }
+    @media screen and (max-width:400px){
+        font-size: 38px;
+    }
+}
+
+.btn-learnMore {
+    margin-left: 24px;
+    color: var(--accent-color);
+    font-weight: 400;
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: #fff;
+    &:hover{
+        color: var(--hover-color);
     }
 }
 
@@ -289,9 +347,6 @@ button{
     }
     // .main__text
     &__text {
-        font-weight: 400;
-        font-size: 22px;
-        line-height: 33px;
         color: var(--white-textColor);
         margin-bottom: 22px;
         max-width: 548px;
@@ -318,68 +373,82 @@ button{
 /*------------------------------/Main-------------------------------*/
 
 /*------------------------------Courses-------------------------------*/
+
 .courses {
     background-color: var(--bg-color);
+    
+    &_all {
+        max-width: 686px;
+        margin: 0 auto;
+        text-align: center;
+
+    }
     // .courses_desc
     &_desc {
-        font-weight: 400;
-        font-size: 22px;
-        line-height: 33px;
         color: var(--white-textColor);
-        text-align: center;
         margin-bottom: 46px;
+        padding: 0 21px;
     }
     // .courses_view-all
     &_view-all {
-        margin-bottom: 80px;
+        margin-bottom: 80px; 
     }
     // .courses__container
     &__container {
+
+        
     }
     // .courses__tytle
     &__tytle {
         color: var(--white-textColor);
-        font-weight: 700;
-        font-size: 44px;
-        text-align: center;
         margin-bottom: 86px;
-        position: relative;
-        transition: color font-size 0.2s;
-        &::after{
-            content: "";
-            height: 2px;
-            width: 150px;
-            background-color: var(--accent-color);
-            position: absolute;
-            left: calc(50% - 75px);
-            top: 70px;
-        }
     }
     // .courses__cards
     &__cards {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        justify-content: center;
+        justify-items: center;
         gap: 20px;
         margin: 0 auto;
-        
-        /*display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
         padding-bottom: 144px;
-        gap: 10px;*/
+        @media screen and(max-width:1308px) {
+            grid-template-columns: 1fr 1fr;
+            gap:40px;
+            max-width: 830px;
+        }
+        @media screen and(max-width:878px) {
+            grid-template-columns: 1fr;
+        }
+
     }
     // .courses__card
     &__card {
-        width: 395px;
-        height: 422px;
-        background-color: #fff;
+
     }
 }
 
 .card {
+    width: 395px;
+    height: 422px;
+    background-color: #fff;
+    @media screen and(max-width:500px) {
+        width: 300px;
+        height: 400px;
+    }
+    @media screen and(max-width:370px) {
+        width: 250px;
+        height: 350px;
+    }
     // .card__img
+    &-last{
+        @media screen and(max-width:1308px) {
+            grid-column: span 2;
+        }
+        @media screen and(max-width:878px) {
+            grid-column: span 1;
+        }
+
+    }
     &__img {
     
     }
@@ -389,13 +458,15 @@ button{
         font-size: 24px;
         line-height: 29px;
         color: var(--tytle-color);
-        margin: 22px 89px 8px 24px;
+        max-width: 280px;
+        margin: 22px 0px 8px 24px;
     }
     // .card__author
     &__author {
         font-weight: 400;
         font-size: 17px;
-        margin: 0px 270px 15px 24px;
+        margin-left: 24px;
+        margin-bottom: 15px;
         color: var(--text-color);
     }
     // .card__price
@@ -408,15 +479,275 @@ button{
     }
     // .card__learn-more
     &__learn-more {
-        margin-left: 24px;
-        color: var(--accent-color);
-        font-weight: 400;
-        font-size: 16px;
-        text-transform: uppercase;
-        background-color: #fff;
-        &:hover{
-            color: var(--hover-color);
-        }
     }
 }
 /*-----------------------------/Courses-------------------------------*/
+
+/*------------------------------recommend -------------------------------*/
+.recommend {
+    background-color: var(--tytle-color);
+    margin-bottom: 144px;
+    // .recommend__wrapper
+    &__wrapper {
+        max-width: 1440px;
+        max-height: 664px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    // .recommend__img
+    &__img {
+        max-width: 720px;
+        align-self:flex-start;
+        @media screen and (max-width:1440px) {
+            align-self: center;
+        }
+        @media screen and (max-width:1100px) {
+            display: none;
+        }
+    }
+    // .recommend__info
+    &__info {
+        max-width: 624px;
+        margin: clamp(1.25rem, -24.818rem + 37.58vw, 9rem) 43px;
+        @media screen and (max-width:1100px) {
+            margin: 20px auto;
+            text-align: center;
+            padding: 0 15px;
+        }
+
+    }
+    // .recommend__tytle
+    &__tytle {
+        color: var(--white-textColor);
+        margin-bottom: 50px;
+        @media screen and (max-width:1100px) {
+            &::after{
+                left: calc(50% - 75px);
+            }
+        }
+    }
+    // .recommend__desc
+    &__desc {
+        color: var(--white-textColor);
+        margin-bottom: 46px;
+    }
+    // .recommend__contact
+    &__contact {
+    }
+}
+/*------------------------------/recommend -------------------------------*/
+
+.workshops {
+    // .workshops__container
+    margin-bottom: 145px;
+    &__container {
+    }
+    // .workshops__about
+    &__about {
+        margin: 0 auto;
+        max-width: 686px;
+        text-align: center;
+    
+    }
+    // .workshops__tytle
+    &__tytle {
+        margin-bottom: 50px;
+    }
+    // .workshops__desc
+    &__desc {
+        margin-bottom: 40px;
+        color: var(--text-color);
+    }
+    // .workshops__view-all
+    &__view-all {
+        margin-bottom: 80px;
+    }
+    // .workshops__cards
+    &__cards {
+        display: grid;
+        justify-items: center;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 48px;
+        margin: 0 auto;
+        @media screen and (max-width:1342px) {
+            grid-template-columns: 1fr 1fr;
+            max-width: 834px;
+        }
+        @media screen and (max-width:900px) {
+            grid-template-columns: 1fr;
+        }
+    }
+    // .workshops__card
+    &__card {
+        
+    }
+
+}
+
+
+
+
+.workshop {
+    width: 393px;
+    padding: 22px 35px 24px 24px;
+    background-color: #fff;
+    @media screen and(max-width:500px) {
+        width: 300px;
+        height: 400px;
+    }
+    @media screen and(max-width:370px) {
+        width: 250px;
+        height: 300px;
+    }
+    // .workshop__tytle
+    &-last{
+        @media screen and (max-width:1342px) {
+            grid-column: span 2;
+            
+        }
+        @media screen and (max-width:900px) {
+            grid-column: span 1;
+        }
+    }
+    &__tytle {
+        font-weight: 700;
+        font-size: 24px;
+        color: var(--tytle-color);
+
+    }
+    // .workshop__desc
+    &__desc {
+        margin-top: 11px;
+        margin-bottom: 28px;
+        color: var(--text-color);
+    }
+    // .workshop__learn-more
+    &__learn-more {
+        margin-left: 0;
+    }
+
+
+}
+
+
+
+
+
+
+/*------------------------------forTeachers  -------------------------------*/
+
+.forTeachers {
+    background-color: var(--tytle-color);
+    margin-bottom: 144px;
+    // .forTeachers_tytle
+    &_tytle {
+        color: var(--white-textColor);
+        margin-bottom: 50px;
+        
+        @media screen and (max-width:740px) {
+            &::after{
+                left: calc(50% - 75px);
+            }
+        }
+    }
+    // .forTeachers__container
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        gap: 48px;
+    }
+    // .forTeachers__img
+    &__img {
+        margin-top: 109px;
+        margin-bottom: 88px;
+       // align-self: center;
+        @media screen and (max-width: 740px){
+            display: none;
+        }
+        @media screen and (max-width: 1060px){
+            align-self: center;
+        }
+    }
+    // .forTeachers__info
+    &__info {
+        max-width: 614px;
+        margin-top: 263px;
+        //margin-top: clamp(7.5rem, 4.376rem + 15.62vw, 18.063rem);
+        @media screen and (max-width: 1255px) {
+            margin-top:clamp(3.125rem, -16.004rem + 41.36vw, 16.438rem);
+        }
+        @media screen and (max-width: 740px) {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+    }
+    // .forTeachers__text
+    &__text {
+        color: var(--white-textColor);
+        margin-bottom: 46px;
+        padding-right: 66px;
+        @media screen and (max-width:740px) {
+            padding: 0;
+        }
+    }
+    &__about-skillz{
+        @media screen and (max-width: 740px) {
+        margin-bottom: 40px;
+        }
+    }
+}
+
+/*------------------------------/forTeachers  -------------------------------*/
+
+
+
+.articles {
+    // .articles_desc
+    &_desc {
+        color: var(--text-color);
+    }
+    // .articles_view-all
+    &_view-all {
+    }
+    // .articles__container
+    &__container {
+    }
+    // .articles__resent
+    &__resent {
+    }
+    // .articles__tytle
+    &__tytle {
+        color: var(--tytle-color);
+    }
+    // .articles__cards
+    &__cards {
+    }
+    // .articles__card
+    &__card {
+    }
+}
+
+
+.card {
+    // .card__img
+    &__img {
+    }
+    // .card__date
+    &__date {
+        margin-top: 23px;
+        margin-left: 24px;
+        font-weight: 400;
+        font-size: 17px;
+        color: var(--text-color);
+    }
+    // .card__tytle
+    &__tytle {
+    }
+    // .card__author
+    &__author {
+    }
+}
+.card-last {
+}
