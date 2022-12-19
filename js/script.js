@@ -1,3 +1,4 @@
+
 (function(){
     const header = document.querySelector('header');
     window.onscroll = () => {
@@ -29,3 +30,25 @@ if(burger&&menu){
         })
     })
 }
+
+
+
+
+
+const swiper = new Swiper('.swiper-reviews', {
+    // Optional parameters
+    //direction: 'vertical',
+    //loop: true,
+    //slidesPerView: 'auto',
+    autoHeight: true,
+    simulateTouch: false,
+    slidesPerView: 1,
+  
+    // If we need pagination
+    pagination: {
+      el: '.swiper-reviews__pagination',
+      type: 'bullets',
+      clickable: true,
+    },
+  
+  });
